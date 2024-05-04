@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  django:
+    container_name: vms
+    build:
+      context: ./vms
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./vms:/usr/src/app/
+    ports:
+      - "8001:8000"
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=877feefr7e8fre
+      - ALLOWED_HOSTS=localhost,127.0.0.1
