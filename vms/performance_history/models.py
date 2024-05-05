@@ -1,5 +1,4 @@
 from django.db import models
-
 from vendor.models import Vendor
 
 
@@ -30,6 +29,3 @@ class HistoricalPerformance(models.Model):
     fulfillment_rate = models.FloatField(
         null=True, blank=True, help_text="Historical record of the fulfilment rate."
     )
-
-    def __str__(self):
-        return self.created_at

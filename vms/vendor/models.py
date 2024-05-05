@@ -22,4 +22,4 @@ class Vendor(models.Model):
     )
 
     def __str__(self):
-        return self.vendor_code
+        return str(self.id)
