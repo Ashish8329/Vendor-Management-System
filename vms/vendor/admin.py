@@ -7,7 +7,12 @@ from vendor.models import Vendor
 
 @admin.register(Vendor)
 class OrderAdmin(admin.ModelAdmin):
-    readonly_fields = ()
+    readonly_fields = (
+        "on_time_delivery_rate",
+        "quality_rating_avg",
+        "average_response_time",
+        "fulfillment_rate",
+    )
     list_display = (
         "id",
         "vendor_code",
