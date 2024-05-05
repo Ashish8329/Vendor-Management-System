@@ -1,15 +1,10 @@
-# serializers.py
-from performance_history.models import HistoricalPerformance
 from rest_framework import serializers
 
+from performance_history.models import HistoricalPerformance
 
-class VedorHistorySerializer(serializers.ModelSerializer):
+
+class HistoricalPerformanceSerializer(serializers.ModelSerializer):
+
     class Meta:
         model = HistoricalPerformance
-        fields = [
-            "vendor",
-            "on_time_delivery_rate",
-            "average_response_time",
-            "quality_rating_avg",
-            "fulfillment_rate",
-        ]
+        fields = "__all__"
