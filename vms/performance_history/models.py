@@ -14,7 +14,7 @@ class HistoricalPerformance(models.Model):
     on_time_delivery_rate = models.FloatField(
         null=True,
         blank=True,
-        help_text="Historical record of the on-time delivery rate.",
+        help_text="Historical record of the  Percentage of orders delivered by the promised date",
     )
     average_response_time = models.FloatField(
         null=True,
@@ -27,5 +27,5 @@ class HistoricalPerformance(models.Model):
         help_text="Historical record of the quality rating average.",
     )
     fulfillment_rate = models.FloatField(
-        null=True, blank=True, help_text="Historical record of the fulfilment rate."
+        null=True, blank=True, help_text="Historical record of Percentage of purchase orders fulfilled without issues."
     )
