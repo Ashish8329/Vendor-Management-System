@@ -1,22 +1,23 @@
 from django.contrib import admin
 from django.utils import timezone
-from vendor.models import Vendor
+from performance_history.models import HistoricalPerformance
 
 # Register your models here.
 
 
-@admin.register(Vendor)
-class OrderAdmin(admin.ModelAdmin):
-    readonly_fields = ()
+@admin.register(HistoricalPerformance)
+class UserAnalyticsHistoryAdmin(admin.ModelAdmin):
+    readonly_fields = ("created_at",)
     list_display = (
         "id",
-        "vendor_code",
+        "vendor",
     )
     empty_value_display = "-None-"
-    search_fields = ("vendor_code",)
+    search_fields = ("vendor",)
 
     def save_model(self, request, obj, form, change):
 
+        obj.created_at = timezone.now()
         super().save_model(request, obj, form, change)
 
     def delete_model(self, request, obj):
