@@ -34,7 +34,7 @@ class VendorPerformanceCalculator:
             all_pos = Order.objects.filter(vendor__id=self.vendor_id)
 
             on_time_delivered_pos = completed_pos.filter(
-                delivery_date__gte=F("acknowledgment_date")
+                delivery_date__gte=F("po_delivered_on")
             )
             successful_pos_count = all_pos.filter(
                 status="Completed", quality_rating__isnull=False
@@ -72,13 +72,13 @@ class VendorPerformanceCalculator:
             float: The average response time in hours.
         """
         try:
-            completed_pos = Order.objects.filter(
-                vendor__id=self.vendor_id, status="Completed"
+            pos = Order.objects.filter(
+                vendor__id=self.vendor_id,  
             )
             total_response_time = timedelta(seconds=0)
-            total_completed_pos = completed_pos.count()
+            total_completed_pos = pos.count()
 
-            for po in completed_pos.filter(acknowledgment_date__isnull=False):
+            for po in pos.filter(acknowledgment_date__isnull=False):
                 total_response_time += po.acknowledgment_date - po.issue_date
 
             return (

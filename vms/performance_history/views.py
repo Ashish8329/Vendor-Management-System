@@ -29,6 +29,12 @@ class VendorPerformanceAPIView(APIView):
             performance_calculator = VendorPerformanceCalculator(vendor_id)
             performance_data = performance_calculator.calculate_performance_metrics()
 
+            #Update the vendor profile performance matrix data
+            vendor.on_time_delivery_rate = performance_data['on_time_delivery_rate']
+            vendor.quality_rating_avg = performance_data['quality_rating_avg']
+            vendor.fulfillment_rate = performance_data['fulfillment_rate']
+            vendor.save()
+
             performance_metrics = {"vendor": vendor_id, "created_at": timezone.now()}
             performance_metrics.update(performance_data)
 
@@ -39,7 +45,6 @@ class VendorPerformanceAPIView(APIView):
 
             # Construct response data
             response_data = {
-                "vendor_id": vendor.id,
                 "vendor_code": vendor.vendor_code,
                 **performance_data,
             }
@@ -80,10 +85,11 @@ class UpdateAcknowledgmentEndpoint(APIView):
             average_response_time = (
                 performance_calculator.calculate_average_response_time()
             )
+             
 
             # Update vendor's average response time
             vendor = Vendor.objects.get(id=purchase_order.vendor_id)
-            vendor.average_response_time = average_response_time
+            vendor.average_response_time = round(average_response_time, 2)
             vendor.save()
 
             # Return success response

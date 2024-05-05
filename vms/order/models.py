@@ -31,6 +31,9 @@ class Order(models.Model):
     acknowledgment_date = models.DateTimeField(
         null=True, blank=True, help_text="Timestamp when the vendor acknowledged the PO"
     )
+    po_delivered_on = models.DateTimeField(
+        null=True, blank=True, help_text="actual time when the PO is sucessfully delivered"
+    )
 
     def __str__(self):
         return self.po_number

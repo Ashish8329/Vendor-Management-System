@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from django.utils import timezone
 
 from order.models import Order
 from order.serializers import PurchaseOrderSerializer
@@ -127,6 +128,12 @@ class PurchaseOrderDetailView(APIView):
         """
         try:
             order = Order.objects.get(po_number=po_id)
+            data = request.data
+            #if the status field is updated to complete mins po is Completed than set the po actual delivery time 
+            if data['status'] =="Completed":
+                order.po_delivered_on = timezone.now()
+                order.save()
+
             serializer = PurchaseOrderSerializer(instance=order, data=request.data)
             if serializer.is_valid():
                 serializer.save()

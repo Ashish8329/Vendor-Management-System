@@ -7,7 +7,10 @@ from order.models import Order
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    # readonly_fields = ()
+    readonly_fields = (
+        "acknowledgment_date",
+        "po_delivered_on",
+    )
     list_display = (
         "id",
         "vendor",

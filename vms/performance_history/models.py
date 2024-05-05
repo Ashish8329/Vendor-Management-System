@@ -19,7 +19,7 @@ class HistoricalPerformance(models.Model):
     average_response_time = models.FloatField(
         null=True,
         blank=True,
-        help_text="Historical record of the average response time.",
+        help_text="Historical record of the average response time in (hr:mm).",
     )
     quality_rating_avg = models.FloatField(
         null=True,

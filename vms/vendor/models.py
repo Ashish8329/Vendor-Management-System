@@ -15,7 +15,7 @@ class Vendor(models.Model):
         null=True, help_text="Average quality rating based on purchase orders"
     )
     average_response_time = models.FloatField(
-        null=True, help_text="Average response time to acknowledge purchase orders"
+        null=True, help_text="Average response time to acknowledge purchase orders in (hr:mm)"
     )
     fulfillment_rate = models.FloatField(
         null=True, help_text="Percentage of purchase orders fulfilled without issues."
