@@ -3,6 +3,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.utils import timezone
+from rest_framework.permissions import IsAuthenticated
 
 from order.models import Order
 from order.serializers import PurchaseOrderSerializer
@@ -15,6 +16,8 @@ class PurchaseOrder(APIView):
     """
     API endpoint to handle purchase orders.
     """
+    permission_classes = [IsAuthenticated]
+
 
     def post(self, request):
         """
@@ -88,7 +91,8 @@ class PurchaseOrderDetailView(APIView):
     """
     API endpoint to handle individual purchase orders.
     """
-
+    permission_classes = [IsAuthenticated]
+    
     def get(self, request, po_id):
         """
         Retrieve details of a specific purchase order.
