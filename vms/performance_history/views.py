@@ -3,6 +3,7 @@ from django.utils import timezone
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.permissions import IsAuthenticated
 
 from order.models import Order
 from performance_history.serializers import HistoricalPerformanceSerializer
@@ -16,6 +17,7 @@ class VendorPerformanceAPIView(APIView):
     Returns:
         Response: A JSON response containing the calculated performance metrics and vendor information.
     """
+    permission_classes = [IsAuthenticated]
 
     def get(self, request, vendor_id):
         """
@@ -63,6 +65,7 @@ class UpdateAcknowledgmentEndpoint(APIView):
     """
     API endpoint to update acknowledgment date for a purchase order.
     """
+    permission_classes = [IsAuthenticated]
 
     def post(self, request, po_id):
         """
