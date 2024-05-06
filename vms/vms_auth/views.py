@@ -6,7 +6,7 @@ from rest_framework.authtoken.models import Token
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from vms_auth.serializers import UserSerializer
-
+from rest_framework_simplejwt.tokens import RefreshToken
 # Create your views here.
 
 
@@ -23,7 +23,6 @@ class RegisterUser(APIView):
 
         serializer.save()
         user = User.objects.get(username=serializer.data["username"])
-        token_obj, _ = Token.objects.get_or_create(user=user)
 
         return Response(
             {"message": "User registered successfully", "data": serializer.data},
@@ -43,16 +42,18 @@ class UserLogin(APIView):
             )
 
         user = authenticate(username=username, password=password)
+        refresh = RefreshToken.for_user(user)
 
+        
         if not user:
             return Response(
-                {"message": "Invalid username or password"},
+                {"message": "Invalid username or password", },
                 status=status.HTTP_401_UNAUTHORIZED,
             )
 
-        token, _ = Token.objects.get_or_create(user=user)
+        # token, _ = Token.objects.get_or_create(user=user)
 
         return Response(
-            {"message": "Login successful", "token": token.key},
+            {"message": "Login successful", "refresh": str(refresh),'access':str(refresh.access_token)},
             status=status.HTTP_200_OK,
         )

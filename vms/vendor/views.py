@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from vendor.models import Vendor
-
+from rest_framework.permissions import IsAuthenticated
 from .serializers import VendorSerializer
 
 # Create your views here.
@@ -12,6 +12,7 @@ from .serializers import VendorSerializer
 
 class Vendors(APIView):
     """API endpoint for managing vendors."""
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         """Create a new vendor."""
