@@ -37,7 +37,7 @@ Go to the directory where you cloned the repository.
 > # For the first time
 
 ```
-docker-compose up --build   # For the first time
+docker-compose up --build   
 ```
 Or
 > [!NOTE]
