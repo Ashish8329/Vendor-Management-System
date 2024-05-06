@@ -1,0 +1,422 @@
+{
+	"info": {
+		"_postman_id": "44a21e4f-0fa6-4ed0-8bcb-6b0abc950898",
+		"name": "vms-collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34213868"
+	},
+	"item": [
+		{
+			"name": "vms_auth",
+			"item": [
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\":\"a\",\r\n  \"password\":\"p\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/register/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"username\":\"ashish3\",\r\n  \"password\":\"p3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/register/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "vendor",
+			"item": [
+				{
+					"name": "create vendors",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"vendor_01\",\r\n    \"contact_details\":\"contact_vendor_01\",\r\n    \"address\":\"address_vendor_01\",\r\n    \"vendor_code\":111\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/vendors/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"vendors",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list all vendors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/vendors/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"vendors",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get specific vendors",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/vendors/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"vendors",
+								"1"
+							],
+							"query": [
+								{
+									"key": "vendor_id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update specific vendors details",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"vendor_1\",\r\n    \"contact_details\": \"contact_vendor_01\",\r\n    \"address\": \"address_vendor_01\",\r\n    \"vendor_code\": \"111\",\r\n    \"on_time_delivery_rate\": null,\r\n    \"quality_rating_avg\": null,\r\n    \"average_response_time\": null,\r\n    \"fulfillment_rate\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/vendors/11/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"vendors",
+								"11",
+								""
+							],
+							"query": [
+								{
+									"key": "vendor_id",
+									"value": "1",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete vendor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"ashish\",\r\n    \"contact_details\": \"abc\",\r\n    \"address\": \"a\",\r\n    \"vendor_code\": \"1\",\r\n    \"on_time_delivery_rate\": 1.0,\r\n    \"quality_rating_avg\": 1.0,\r\n    \"average_response_time\": 1.0,\r\n    \"fulfillment_rate\":31.0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/vendors/7/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"vendors",
+								"7",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "purchase_orders",
+			"item": [
+				{
+					"name": "get all purhcase orders with  filter vendor",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/purchase_orders/?vendor_id=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"purchase_orders",
+								""
+							],
+							"query": [
+								{
+									"key": "vendor_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create purhcase order",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"po_number\": \"1\",\r\n        \"order_date\": \"2024-05-04T13:56:21Z\",\r\n        \"delivery_date\": \"2024-05-05T13:56:38Z\",\r\n        \"items\": {\r\n            \"item\": 1\r\n        },\r\n        \"quantity\": 1,\r\n        \"status\": \"Pending\",\r\n        \"quality_rating\": null,\r\n        \"issue_date\": \"2024-05-04T13:57:47Z\",\r\n        \"acknowledgment_date\": null,\r\n        \"vendor\": 3\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/purchase_orders/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"purchase_orders",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Retrieve details of a specific purchase order.",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/purchase_orders/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"purchase_orders",
+								"1"
+							],
+							"query": [
+								{
+									"key": "vendor_id",
+									"value": "3",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update a purchase order.",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"po_number\": \"1\",\r\n    \"order_date\": \"2024-05-01T16:00:10Z\",\r\n    \"delivery_date\": \"2024-05-10T16:01:45Z\",\r\n    \"items\": {\r\n        \"laptop\": 1\r\n    },\r\n    \"quantity\": 110,\r\n    \"status\": \"Completed\",\r\n    \"quality_rating\": 5.0,\r\n    \"issue_date\": \"2024-05-05T16:03:17Z\",\r\n    \"acknowledgment_date\": \"2024-05-05T16:12:40.941673Z\",\r\n    \"vendor\": 11\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8001/api/purchase_orders/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"purchase_orders",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete order",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/purchase_orders/1/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"purchase_orders",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "performance matrix",
+			"item": [
+				{
+					"name": "get performance metrics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/vendors/3/performance/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"vendors",
+								"3",
+								"performance",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "acknowledge",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8001/api/purchase_orders/12/acknowledge/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8001",
+							"path": [
+								"api",
+								"purchase_orders",
+								"12",
+								"acknowledge",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
