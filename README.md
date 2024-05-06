@@ -57,5 +57,7 @@ Follow the prompts to set up the superuser credentials.:grin:  :crossed_fingers:
 :point_right: **Congratulations**:balloon:!:tada::tada: Your VMS project is now ready to explore.:confetti_ball:	:balloon: :point_left:
 
 # Thank You :crossed_fingers:
-:sparkles::sparkles:Thank you for using the Vendor Management System (VMS) APIs. If you encounter any issues or have any feedback, feel free to contact us.:sparkles::sparkles:
+:sparkles::sparkles:Thank you for using the Vendor Management System (VMS) APIs. If you encounter any issues or have any feedback, feel free to [contact us.](https://www.linkedin.com/in/ashish-auti-069346254/):sparkles::sparkles:
 # :grinning:
+ 
+
